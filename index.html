@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigília</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper:     #f8f6f1;
+      --ink:       #111010;
+      --ink-mid:   #3a3835;
+      --ink-light: #7a7570;
+      --red:       #8b1a1a;
+      --rule:      #d0ccc4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Layout shell ── */
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Masthead ── */
+    .masthead {
+      padding-top: 5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 2px solid var(--ink);
+      text-align: center;
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.1s;
+    }
+
+    .masthead-cross {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      letter-spacing: 0.05em;
+      margin-top: 1rem;
+    }
+
+    .masthead h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 7vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.9rem;
+    }
+
+    .masthead-sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    /* ── About line ── */
+    .about {
+      padding: 2.2rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      font-style: italic;
+      line-height: 1.7;
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.3s;
+    }
+
+    /* ── Vigílias list ── */
+    .vigilias-header {
+      padding-top: 2.4rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.2rem;
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.5s;
+    }
+
+    .vigilias-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .vigilias-count {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-light);
+    }
+
+    .vigilias-list {
+      list-style: none;
+      opacity: 0;
+      animation: appear 0.7s ease forwards 0.65s;
+    }
+
+    /* ── Single vigília row ── */
+    .vigilia {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .vigilia a {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr auto;
+      align-items: baseline;
+      gap: 0 1.4rem;
+      padding: 1.5rem 0;
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+
+    .vigilia a:hover { color: var(--red); }
+
+    .vigilia-num {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: var(--red);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 0.15em;
+      transition: color 0.2s ease;
+    }
+
+    .vigilia a:hover .vigilia-num { color: var(--red); }
+
+    .vigilia-body { min-width: 0; }
+
+    .vigilia-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .vigilia-ref {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    .vigilia-arrow {
+      font-size: 0.95rem;
+      color: var(--rule);
+      transition: color 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .vigilia a:hover .vigilia-arrow {
+      color: var(--red);
+      transform: translateX(3px);
+    }
+
+    /* ── Em breve (placeholder) ── */
+    .vigilia.upcoming a {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .vigilia.upcoming .vigilia-title { color: var(--ink-light); font-weight: 400; font-style: italic; }
+    .vigilia.upcoming .vigilia-num   { color: var(--rule); }
+    .vigilia.upcoming .vigilia-arrow { display: none; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 3rem 0 4rem;
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.9s;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 0 1.4rem; }
+      .masthead { padding-top: 3.5rem; }
+      .vigilia a { grid-template-columns: 2.6rem 1fr auto; gap: 0 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="masthead">
+      <h1>Vigília</h1>
+      <span class="masthead-cross">✠</span>
+    </header>
+
+    <p class="about">
+      Uma vigília é o tempo que precede a aurora.
+    </p>
+
+    <nav aria-label="Lista de vigílias">
+      <div class="vigilias-header">
+        <span class="vigilias-label">Vigílias</span>
+        <span class="vigilias-count">em curso</span>
+      </div>
+
+      <ul class="vigilias-list">
+
+        <!-- Adicione novas vigílias aqui, no topo da lista -->
+
+        <!-- Exemplo de vigília publicada:
+        <li class="vigilia">
+          <a href="vigilia-i.html">
+            <span class="vigilia-num">Vig. I</span>
+            <span class="vigilia-body">
+              <span class="vigilia-title">O Monte e o Rosto</span>
+              <span class="vigilia-ref">Mt 17, 1–9 · II Domingo da Quaresma</span>
+            </span>
+            <span class="vigilia-arrow">→</span>
+          </a>
+        </li>
+        -->
+
+        <li class="vigilia upcoming">
+          <a>
+            <span class="vigilia-num">Vig. I</span>
+            <span class="vigilia-body">
+              <span class="vigilia-title">em breve</span>
+              <span class="vigilia-ref">&nbsp;</span>
+            </span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <footer>
+    </footer>
+
+  </div>
+</body>
+</html>
