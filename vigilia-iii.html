@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigília III — O que ela fez com o que tinha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper:     #f8f6f1;
+      --ink:       #111010;
+      --ink-mid:   #3a3835;
+      --ink-light: #7a7570;
+      --red:       #8b1a1a;
+      --rule:      #d0ccc4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .masthead {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+      border-bottom: 2px solid var(--ink);
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.1s;
+    }
+
+    .masthead-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .masthead-back {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .masthead-back:hover { color: var(--red); }
+
+    .masthead-sep {
+      width: 1.5rem;
+      height: 1px;
+      background: var(--rule);
+      flex-shrink: 0;
+    }
+
+    .masthead-vignum {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .masthead h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    .masthead-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead-ref {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    .masthead-cross {
+      font-size: 0.78rem;
+      color: var(--rule);
+    }
+
+    .vigilia-body {
+      padding-top: 3.5rem;
+      padding-bottom: 5rem;
+      opacity: 0;
+      animation: appear 0.7s ease forwards 0.4s;
+    }
+
+    .vigilia-body p {
+      margin-bottom: 1.6rem;
+      color: var(--ink-mid);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .vigilia-body p:last-child { margin-bottom: 0; }
+
+    .passage {
+      margin: 2.8rem 0;
+      padding: 1.8rem 0 1.8rem 2rem;
+      border-left: 2px solid var(--red);
+    }
+
+    .passage p {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.1rem !important;
+      color: var(--ink) !important;
+      line-height: 1.65 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .passage cite {
+      display: block;
+      margin-top: 0.8rem;
+      font-family: 'Libre Baskerville', serif;
+      font-style: normal;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .break {
+      display: block;
+      text-align: center;
+      color: var(--red);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      margin: 2.6rem 0;
+      user-select: none;
+    }
+
+    footer {
+      padding: 2.5rem 0 4rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.7s;
+    }
+
+    .footer-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--red); }
+
+    .footer-cross {
+      font-size: 0.85rem;
+      color: var(--rule);
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 0 1.4rem; }
+      .masthead { padding-top: 3rem; }
+      .passage { padding-left: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="masthead">
+      <div class="masthead-eyebrow">
+        <a href="index.html" class="masthead-back">Vigília</a>
+        <span class="masthead-sep"></span>
+        <span class="masthead-vignum">Vig. III</span>
+      </div>
+      <h1>O que ela fez com o que tinha</h1>
+      <div class="masthead-meta">
+        <span class="masthead-ref">Lc 7, 36–50</span>
+        <span class="masthead-cross">✠</span>
+      </div>
+    </header>
+
+    <article class="vigilia-body">
+
+      <p>
+        Ela entrou sem ser convidada. A casa era de um fariseu, a mesa era de homens que sabiam discutir a Lei, e ela não tinha lugar nenhum ali — exceto aquele que ninguém ocupa porque ninguém quer: o chão, aos pés de Jesus.
+      </p>
+
+      <p>
+        Lucas não nos diz o nome dela. Diz apenas que era conhecida na cidade como pecadora. Que carregava um frasco de alabastro com perfume. E que, chegando por trás, começou a chorar.
+      </p>
+
+      <div class="passage">
+        <p>
+          Com suas lágrimas, ela molhou os pés de Jesus e os enxugou com os seus cabelos; cobriu-os de beijos e os ungiu com o perfume.
+        </p>
+        <cite>Lc 7, 38</cite>
+      </div>
+
+      <p>
+        Não há palavra dela em toda a cena. Nenhuma. Ela não pede, não explica, não se defende quando Simão a julga em silêncio. Tudo o que ela tem — as lágrimas, os cabelos, o perfume que provavelmente custou muito — ela coloca aos pés de Cristo sem mediação, sem discurso, sem garantia de que seria bem recebida.
+      </p>
+
+      <p>
+        É um dos gestos mais expostos da Escritura. Desfazer os cabelos em público era, naquele tempo, um ato de abandono total das conveniências. Ela já não tinha reputação a proteger — mas ainda havia aquela última camada de dignidade social que o gesto destruía por completo. E ela o destruiu voluntariamente, diante de um homem que ainda não havia dito uma palavra a ela.
+      </p>
+
+      <span class="break">✠ ✠ ✠</span>
+
+      <p>
+        Simão observa e conclui: se este homem fosse profeta, saberia quem é essa mulher. O raciocínio é impecável e completamente errado. Ele pressupõe que o conhecimento de Deus funciona como distância — que saber o que alguém é exige afastar-se, julgar de fora, manter as mãos limpas.
+      </p>
+
+      <p>
+        Cristo responde com uma parábola curta — dois devedores, dois perdões, duas medidas de amor — e depois faz algo desconcertante: compara os gestos. Não as intenções, não os históricos de vida. Os gestos concretos daquela tarde. Simão não lhe deu água para os pés; ela os lavou com lágrimas. Simão não lhe deu beijo de saudação; ela não parou de beijar os pés desde que entrou. Simão não ungiu a cabeça; ela ungiu os pés com perfume.
+      </p>
+
+      <p>
+        O fariseu observou tudo com exatidão e não viu nada. Ela agiu sem calcular nada e viu tudo.
+      </p>
+
+      <span class="break">✠</span>
+
+      <div class="passage">
+        <p>
+          Por isso, os seus muitos pecados lhe são perdoados, porque ela amou muito. Mas aquele a quem pouco se perdoa, pouco ama.
+        </p>
+        <cite>Lc 7, 47</cite>
+      </div>
+
+      <p>
+        Esta frase inverte a ordem que esperávamos. Não: ela amou muito, portanto será perdoada. Mas: ela amou muito porque muito lhe foi perdoado. O amor não é a causa do perdão — é o seu fruto, o sinal de que o perdão já agiu por dentro, antes mesmo de ser pronunciado em palavras.
+      </p>
+
+      <p>
+        Ela sabia de si o que Simão nunca soube de si mesmo: que precisava de perdão. E essa consciência, que aos olhos do mundo era vergonha, tornou-se a abertura pela qual a graça entrou.
+      </p>
+
+      <span class="break">✠ ✠ ✠</span>
+
+      <p>
+        Há uma penitência que é fria — a que cumpre o dever, contabiliza os pecados, paga o que deve e se retira. E há uma penitência que é fogo — a que não calcula, não poupa, não se preocupa com o que os outros vão pensar do gesto.
+      </p>
+
+      <p>
+        Ela não tinha muito. Tinha lágrimas, cabelos e um frasco de alabastro. Deu tudo. E isso foi suficiente — mais do que suficiente — para que Cristo dissesse, diante de todos: <em>A tua fé te salvou; vai em paz.</em>
+      </p>
+
+      <p>
+        A vigília desta noite é essa: trazer o que se tem, sem guardar nada para a saída. Não o gesto perfeito. Não a oração eloquente. Apenas o que é real — as lágrimas que existem, o amor que existe, o arrependimento que existe — e colocá-lo, sem palavras, aos pés de Cristo.
+      </p>
+
+    </article>
+
+    <footer>
+      <a href="vigilia-ii.html" class="footer-link">← Vig. II</a>
+      <span class="footer-cross">✠</span>
+      <a href="index.html" class="footer-link">Todas as vigílias →</a>
+    </footer>
+
+  </div>
+</body>
+</html>
