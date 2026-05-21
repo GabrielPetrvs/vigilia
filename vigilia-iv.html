@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigília IV — Quando a luz se apagou, chegaste Tu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper:     #f8f6f1;
+      --ink:       #111010;
+      --ink-mid:   #3a3835;
+      --ink-light: #7a7570;
+      --red:       #8b1a1a;
+      --rule:      #d0ccc4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .masthead {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+      border-bottom: 2px solid var(--ink);
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.1s;
+    }
+
+    .masthead-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .masthead-back {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .masthead-back:hover { color: var(--red); }
+
+    .masthead-sep {
+      width: 1.5rem;
+      height: 1px;
+      background: var(--rule);
+      flex-shrink: 0;
+    }
+
+    .masthead-vignum {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .masthead h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    .masthead-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead-ref {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    .masthead-cross {
+      font-size: 0.78rem;
+      color: var(--rule);
+    }
+
+    .vigilia-body {
+      padding-top: 3.5rem;
+      padding-bottom: 5rem;
+      opacity: 0;
+      animation: appear 0.7s ease forwards 0.4s;
+    }
+
+    .vigilia-body p {
+      margin-bottom: 1.6rem;
+      color: var(--ink-mid);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .vigilia-body p:last-child { margin-bottom: 0; }
+
+    /* Drop cap na abertura */
+    .vigilia-body p.opening::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 3.8rem;
+      line-height: 0.8;
+      float: left;
+      margin-right: 0.08em;
+      margin-top: 0.08em;
+      color: var(--ink);
+    }
+
+    .passage {
+      margin: 2.8rem 0;
+      padding: 1.8rem 0 1.8rem 2rem;
+      border-left: 2px solid var(--red);
+    }
+
+    .passage p {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.1rem !important;
+      color: var(--ink) !important;
+      line-height: 1.65 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .passage cite {
+      display: block;
+      margin-top: 0.8rem;
+      font-family: 'Libre Baskerville', serif;
+      font-style: normal;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .break {
+      display: block;
+      text-align: center;
+      color: var(--red);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      margin: 2.6rem 0;
+      user-select: none;
+    }
+
+    /* Oração final */
+    .prayer {
+      margin-top: 3rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .prayer p {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem !important;
+      color: var(--ink-mid) !important;
+      line-height: 1.75 !important;
+      margin-bottom: 0.8rem !important;
+      text-align: center;
+    }
+
+    .prayer p:last-child { margin-bottom: 0 !important; }
+
+    footer {
+      padding: 2.5rem 0 4rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.7s;
+    }
+
+    .footer-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--red); }
+
+    .footer-cross {
+      font-size: 0.85rem;
+      color: var(--rule);
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 0 1.4rem; }
+      .masthead { padding-top: 3rem; }
+      .passage { padding-left: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="masthead">
+      <div class="masthead-eyebrow">
+        <a href="index.html" class="masthead-back">Vigília</a>
+        <span class="masthead-sep"></span>
+        <span class="masthead-vignum">Vig. IV</span>
+      </div>
+      <h1>Quando a luz se apagou, chegaste Tu</h1>
+      <div class="masthead-meta">
+        <span class="masthead-ref">Jr 1, 5 · Sl 27 (26), 1</span>
+        <span class="masthead-cross">✠</span>
+      </div>
+    </header>
+
+    <article class="vigilia-body">
+
+      <p class="opening">
+        Quando o Senhor chegou à minha vida — aquela primeira vez em que Ele e eu nos tornamos um —, olhando para trás não consigo bem recordar como foi esse encontro inaugural. Há mistérios que a memória não alcança porque pertencem à ordem da graça, anterior à consciência. Contudo, lembro com nitidez do dia em que, com mais inteireza de espírito, o Senhor chegou novamente. Foi como se o inverno que havia em mim fosse tocado por aquele Sol que nunca se apaga, pelo calor daquele rosto que faz florescer tudo o que toca. De certo modo, tudo em mim riu daquele inverno que havia passado.
+      </p>
+
+      <p>
+        Naquele dia em que o Senhor se apresentou a mim de modo tão claro, foi como se enganássemos o tempo juntos. Nem passado nem futuro — somente o presente, onde o coração deveria sempre repousar. Ali, no <em>kairós</em>, no tempo de Deus, o Senhor novamente me abraçou como o pai que corre ao encontro do filho pródigo. E ali me curou. Meu coração se rompeu em canções de amor; minha alma suspira como a corça pelas águas correntes.
+      </p>
+
+      <div class="passage">
+        <p>«Antes que eu te formasse no seio materno, eu te conhecia; antes que saísses do ventre, eu te havia consagrado.»</p>
+        <cite>Jr 1, 5</cite>
+      </div>
+
+      <p>
+        O Senhor é Aquele que caminha ao meu lado. Se O tenho ao lado, não vacilo. Ele me protege e conhece cada linha de minha mão — pois antes mesmo que eu fosse gerado no seio de minha mãe, Ele já me conhecia e já me amava. E agora Ele me chama para segui-Lo mais de perto, para ser aquele que conhece o profundo do Seu coração, que configura o próprio coração ao Sagrado Coração de Jesus.
+      </p>
+
+      <p>
+        Posso dizer, com toda a sinceridade, que tudo mudou naquele dia. Tudo se tornou uma missão de amor, de doação, de vida. Abri meu coração ao Amor que nunca falha, pois Ele jamais me abandonou. E desde então, tenho a graça de poder dizer, a cada santa Missa, na hora da Comunhão, que carrego o céu dentro de mim.
+      </p>
+
+      <p>
+        Nunca imaginei sentir algo assim. Estar tão feliz assim. E ainda que o mundo todo ruísse, permaneceria feliz — porque o que é de Deus permanece. É uma bênção, graças a Deus, ter Te encontrado, meu Senhor. Pois ali, naquilo que muitos chamam de fundo do poço — quando a luz se apagou — chegaste Tu. E foste a luz da minha vida, aquela que expulsa todo o mal que me impedia de Te ver.
+      </p>
+
+      <div class="passage">
+        <p>«O Senhor é minha luz e minha salvação; a quem temerei?»</p>
+        <cite>Sl 27 (26), 1</cite>
+      </div>
+
+      <p>
+        Como os rios e os mares se encontram e se misturam nas enseadas, desde esse dia os meus sonhos e os Teus têm se mesclado. Minha vontade e a Tua se tornam, pouco a pouco, cada vez mais uma só. Respiro com o Teu fôlego, pois és Tu, meu Senhor, quem me dá e sustenta a vida — vida que é toda entregue a Ti. Por isso posso, todos os dias, acordar agradecido e dizer, sem exagero: sou o homem mais afortunado que existe, pois o Teu amor me amou e me ama como se eu fosse o único ser do mundo.
+      </p>
+
+      <span class="break">✠</span>
+
+      <div class="prayer">
+        <p>Ajuda-me, Senhor, a Te amar cada vez mais.</p>
+        <p>Arranca o meu coração do peito e faze-o Teu. Pela Tua Cruz, esconde-me nas Tuas chagas.</p>
+        <p>Tudo isso Te peço e entrego nas mãos da Tua Santíssima Mãe, a Mãe das Lágrimas — para que eu seja aquele que enxuga as lágrimas de Tua Mãe e limpa as Tuas chagas, ao invés de ser o causador de novos sofrimentos ao vosso Coração.</p>
+      </div>
+
+    </article>
+
+    <footer>
+      <a href="vigilia-iii.html" class="footer-link">← Vig. III</a>
+      <span class="footer-cross">✠</span>
+      <a href="index.html" class="footer-link">Todas as vigílias →</a>
+    </footer>
+
+  </div>
+</body>
+</html>
