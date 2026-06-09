@@ -10,28 +10,41 @@
 
   <style>
     :root {
-      --paper:     #f8f6f1;
-      --ink:       #111010;
-      --ink-mid:   #3a3835;
-      --ink-light: #7a7570;
-      --red:       #8b1a1a;
-      --rule:      #d0ccc4;
+      --bg:        #0e0c0a;
+      --ink:       #f0ebe0;
+      --ink-mid:   #c9bfa8;
+      --ink-light: #8a7f6e;
+      --amber:     #c8922a;
+      --amber-dim: #7a5518;
+      --rule:      #2e2820;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
       font-family: 'Libre Baskerville', Georgia, serif;
       font-size: 1rem;
       line-height: 1.75;
       min-height: 100vh;
+      position: relative;
     }
 
-    /* ── Layout shell ── */
+    /* ── Fundo fixo ── */
+    .bg-image {
+      position: fixed;
+      inset: 0;
+      background: url('imagens/fundo.png') center center / cover no-repeat;
+      opacity: 0.18;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     .page {
+      position: relative;
+      z-index: 1;
       max-width: 640px;
       margin: 0 auto;
       padding: 0 2rem;
@@ -39,50 +52,44 @@
 
     /* ── Masthead ── */
     .masthead {
-      padding-top: 5rem;
+      padding-top: 6rem;
       padding-bottom: 3.5rem;
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
       text-align: center;
       opacity: 0;
-      animation: appear 0.6s ease forwards 0.1s;
+      animation: appear 0.8s ease forwards 0.1s;
     }
 
     .masthead-cross {
       display: block;
-      font-size: 0.85rem;
-      color: var(--ink-light);
-      letter-spacing: 0.05em;
-      margin-top: 1rem;
+      font-size: 1rem;
+      color: var(--amber);
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.1em;
     }
 
     .masthead h1 {
       font-family: 'Playfair Display', Georgia, serif;
       font-weight: 900;
-      font-size: clamp(2.8rem, 7vw, 4.4rem);
+      font-size: clamp(3rem, 8vw, 5rem);
       line-height: 1;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.04em;
       color: var(--ink);
-      margin-bottom: 0.9rem;
-    }
-
-    .masthead-sub {
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
+      margin-bottom: 0;
       text-transform: uppercase;
-      color: var(--ink-light);
-      font-family: 'Libre Baskerville', serif;
     }
 
-    /* ── About line ── */
+    /* ── About ── */
     .about {
-      padding: 2.2rem 0 2rem;
+      padding: 2.4rem 0 2.2rem;
       border-bottom: 1px solid var(--rule);
-      font-size: 0.92rem;
-      color: var(--ink-mid);
+      font-size: 0.9rem;
+      color: var(--ink-light);
       font-style: italic;
-      line-height: 1.7;
+      text-align: center;
+      letter-spacing: 0.04em;
       opacity: 0;
-      animation: appear 0.6s ease forwards 0.3s;
+      animation: appear 0.8s ease forwards 0.3s;
     }
 
     /* ── Vigílias list ── */
@@ -91,20 +98,20 @@
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.4rem;
       opacity: 0;
-      animation: appear 0.6s ease forwards 0.5s;
+      animation: appear 0.7s ease forwards 0.5s;
     }
 
     .vigilias-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--ink-light);
     }
 
     .vigilias-count {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       letter-spacing: 0.1em;
       color: var(--ink-light);
     }
@@ -115,14 +122,13 @@
       animation: appear 0.7s ease forwards 0.65s;
     }
 
-    /* ── Single vigília row ── */
     .vigilia {
       border-bottom: 1px solid var(--rule);
     }
 
     .vigilia a {
       display: grid;
-      grid-template-columns: 3.2rem 1fr auto;
+      grid-template-columns: 3.4rem 1fr auto;
       align-items: baseline;
       gap: 0 1.4rem;
       padding: 1.5rem 0;
@@ -131,68 +137,53 @@
       transition: color 0.2s ease;
     }
 
-    .vigilia a:hover { color: var(--red); }
+    .vigilia a:hover { color: var(--amber); }
 
     .vigilia-num {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 0.78rem;
-      color: var(--red);
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      color: var(--amber-dim);
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       padding-top: 0.15em;
       transition: color 0.2s ease;
     }
 
-    .vigilia a:hover .vigilia-num { color: var(--red); }
+    .vigilia a:hover .vigilia-num { color: var(--amber); }
 
     .vigilia-body { min-width: 0; }
 
     .vigilia-title {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       line-height: 1.25;
       display: block;
       margin-bottom: 0.25rem;
+      color: var(--ink);
     }
 
     .vigilia-ref {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--ink-light);
       font-style: italic;
-      letter-spacing: 0.02em;
     }
 
     .vigilia-arrow {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--rule);
       transition: color 0.2s ease, transform 0.2s ease;
       flex-shrink: 0;
     }
 
     .vigilia a:hover .vigilia-arrow {
-      color: var(--red);
+      color: var(--amber);
       transform: translateX(3px);
     }
 
-    /* ── Em breve (placeholder) ── */
-    .vigilia.upcoming a {
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .vigilia.upcoming .vigilia-title { color: var(--ink-light); font-weight: 400; font-style: italic; }
-    .vigilia.upcoming .vigilia-num   { color: var(--rule); }
-    .vigilia.upcoming .vigilia-arrow { display: none; }
-
-    /* ── Footer ── */
     footer {
       padding: 3rem 0 4rem;
-      font-size: 0.75rem;
-      color: var(--ink-light);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
       opacity: 0;
       animation: appear 0.6s ease forwards 0.9s;
     }
@@ -204,17 +195,20 @@
 
     @media (max-width: 480px) {
       .page { padding: 0 1.4rem; }
-      .masthead { padding-top: 3.5rem; }
-      .vigilia a { grid-template-columns: 2.6rem 1fr auto; gap: 0 0.9rem; }
+      .masthead { padding-top: 4rem; }
+      .vigilia a { grid-template-columns: 2.8rem 1fr auto; gap: 0 0.9rem; }
     }
   </style>
 </head>
 <body>
+
+  <div class="bg-image"></div>
+
   <div class="page">
 
     <header class="masthead">
-      <h1>Vigília</h1>
       <span class="masthead-cross">✠</span>
+      <h1>Vigília</h1>
     </header>
 
     <p class="about">
@@ -224,7 +218,7 @@
     <nav aria-label="Lista de vigílias">
       <div class="vigilias-header">
         <span class="vigilias-label">Vigílias</span>
-        <span class="vigilias-count">em curso</span>
+        <span class="vigilias-count">VI publicadas</span>
       </div>
 
       <ul class="vigilias-list">
@@ -300,8 +294,7 @@
       </ul>
     </nav>
 
-    <footer>
-    </footer>
+    <footer></footer>
 
   </div>
 </body>

@@ -3,230 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vigília II — O peixe assado na brasa</title>
+  <title>Vigília II — O fogo na margem</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --paper:     #f8f6f1;
-      --ink:       #111010;
-      --ink-mid:   #3a3835;
-      --ink-light: #7a7570;
-      --red:       #8b1a1a;
-      --rule:      #d0ccc4;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1rem;
-      line-height: 1.75;
-      min-height: 100vh;
-    }
-
-    .page {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* ── Masthead ── */
-    .masthead {
-      padding-top: 5rem;
-      padding-bottom: 3rem;
-      border-bottom: 2px solid var(--ink);
-      opacity: 0;
-      animation: appear 0.6s ease forwards 0.1s;
-    }
-
-    .masthead-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .masthead-back {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .masthead-back:hover { color: var(--red); }
-
-    .masthead-sep {
-      width: 1.5rem;
-      height: 1px;
-      background: var(--rule);
-      flex-shrink: 0;
-    }
-
-    .masthead-vignum {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--red);
-    }
-
-    .masthead h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 900;
-      font-size: clamp(2rem, 6vw, 3.2rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 1.4rem;
-    }
-
-    .masthead-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .masthead-ref {
-      font-size: 0.78rem;
-      color: var(--ink-light);
-      font-style: italic;
-      letter-spacing: 0.02em;
-    }
-
-    .masthead-cross {
-      font-size: 0.78rem;
-      color: var(--rule);
-    }
-
-    /* ── Body text ── */
-    .vigilia-body {
-      padding-top: 3.5rem;
-      padding-bottom: 5rem;
-      opacity: 0;
-      animation: appear 0.7s ease forwards 0.4s;
-    }
-
-    .vigilia-body p {
-      margin-bottom: 1.6rem;
-      color: var(--ink-mid);
-      font-size: 1.05rem;
-      line-height: 1.85;
-    }
-
-    .vigilia-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ── Passage ── */
-    .passage {
-      margin: 2.8rem 0;
-      padding: 1.8rem 0 1.8rem 2rem;
-      border-left: 2px solid var(--red);
-    }
-
-    .passage p {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-size: 1.1rem !important;
-      color: var(--ink) !important;
-      line-height: 1.65 !important;
-      margin-bottom: 0.9rem !important;
-    }
-
-    .passage p:last-of-type {
-      margin-bottom: 0 !important;
-    }
-
-    .passage cite {
-      display: block;
-      margin-top: 0.8rem;
-      font-family: 'Libre Baskerville', serif;
-      font-style: normal;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-    }
-
-    /* ── Section break ── */
-    .break {
-      display: block;
-      text-align: center;
-      color: var(--red);
-      font-size: 0.85rem;
-      letter-spacing: 0.3em;
-      margin: 2.6rem 0;
-      user-select: none;
-    }
-
-    /* ── Nota de rodapé interna ── */
-    .nota {
-      margin-top: 3.5rem;
-      padding-top: 1.8rem;
-      border-top: 1px solid var(--rule);
-      font-size: 0.82rem;
-      color: var(--ink-light);
-      font-style: italic;
-      line-height: 1.7;
-    }
-
-    .nota a {
-      color: var(--ink-light);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s;
-    }
-
-    .nota a:hover { color: var(--red); }
-
-    /* ── Footer nav ── */
-    footer {
-      padding: 2.5rem 0 4rem;
-      border-top: 1px solid var(--rule);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      opacity: 0;
-      animation: appear 0.6s ease forwards 0.7s;
-    }
-
-    .footer-link {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-link:hover { color: var(--red); }
-
-    .footer-cross {
-      font-size: 0.85rem;
-      color: var(--rule);
-    }
-
-    @keyframes appear {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 480px) {
-      .page { padding: 0 1.4rem; }
-      .masthead { padding-top: 3rem; }
-      .passage { padding-left: 1.2rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
+  <div class="bg-image"></div>
   <div class="page">
 
     <header class="masthead">
@@ -235,7 +19,7 @@
         <span class="masthead-sep"></span>
         <span class="masthead-vignum">Vig. II</span>
       </div>
-      <h1>O peixe assado na brasa</h1>
+      <h1>O fogo na margem</h1>
       <div class="masthead-meta">
         <span class="masthead-ref">Jo 21, 4–12</span>
         <span class="masthead-cross">✠</span>
@@ -245,74 +29,63 @@
     <article class="vigilia-body">
 
       <p>
-        A noite passou sem nada. A rede, jogada e recolhida tantas vezes, voltava sempre vazia. João não descreve o cansaço — não precisa. Quem já trabalhou a noite inteira sem resultado sabe o que é o amanhecer nessas condições: não um alívio, mas uma exposição. A luz chega e mostra o que não veio.
+        Eles pescaram a noite toda e não apanharam nada. É assim que o texto começa — com o fracasso silencioso de quem trabalhou sem colheita, de quem remou sem chegar a lugar algum. A noite sobre o lago de Tiberíades não foi dramática como a do Jaboc. Foi apenas longa. E vazia.
       </p>
 
       <p>
-        É nesse momento — exatamente nesse — que alguém aparece na margem.
+        Há um cansaço que não vem da luta, mas da espera inútil. De lançar a rede uma vez, e outra, e outra — e puxá-la sempre do mesmo jeito: limpa demais, leve demais. Esse é o cansaço dos discípulos naquela madrugada. Não têm ferida no quadril. Têm apenas as mãos gastas e o silêncio do lago.
       </p>
 
       <div class="passage">
-        <p>
-          Ao romper do dia, Jesus estava na margem, mas os discípulos não sabiam que era Jesus. Jesus lhes disse: "Filhos, tendes aí algum peixe?" Responderam-lhe: "Não."
-        </p>
-        <p>
-          Ele lhes disse: "Lançai a rede para o lado direito do barco e achareis." Lançaram-na, e já não podiam puxá-la, tamanha era a quantidade de peixes.
-        </p>
-        <cite>Jo 21, 4–6</cite>
+        <p>Ao amanhecer, Jesus estava na margem; mas os discípulos não sabiam que era Jesus.</p>
+        <cite>Jo 21, 4</cite>
       </div>
 
       <p>
-        O que impressiona não é o milagre. É a pergunta. <em>Tendes aí algum peixe?</em> Não é uma pergunta de quem não sabe. É a pergunta de quem sabe, e quer que eles digam. Quer que a ausência seja nomeada antes de ser preenchida. Não: Não se preocupem, eu resolvo. Mas: Contem-me o que não veio.
+        Ele já estava lá. Antes do reconhecimento, antes da pergunta, antes do milagre — Jesus já estava na margem, de pé, com um fogo aceso. O texto não explica quando chegou. Simplesmente estava lá, como quem esperou a noite inteira sem que os outros soubessem.
       </p>
 
       <p>
-        Há uma pedagogia muito particular aqui. O ressuscitado não chega com a resposta na mão. Chega com uma pergunta que abre espaço para o fracasso ser dito em voz alta.
+        É preciso parar nessa imagem. Há algo de extraordinariamente discreto na presença de Cristo nessa manhã. Não vem sobre as águas desta vez. Não há vento, não há voz do alto. Está na margem, junto a um fogo pequeno, e os discípulos passam a noite inteira a poucos metros sem perceber.
       </p>
 
       <span class="break">✠ ✠ ✠</span>
 
       <p>
-        João reconhece primeiro. <em>É o Senhor</em>, diz ele — e a frase basta. Pedro não espera: joga-se ao mar. A distância entre o barco e a margem é de uns duzentos côvados, algo como cem metros. Pedro nada. Os outros vêm pelo barco, arrastando a rede cheia.
+        A pergunta que Ele faz é simples ao ponto de parecer banal: <em>Filhos, tendes aí algum peixe?</em> Não revela quem é. Não anuncia a Ressurreição. Pergunta pelo peixe — pelo resultado concreto, pela colheita da noite, pelo fruto do esforço. E eles respondem que não.
       </p>
 
       <p>
-        Os dois chegam ao mesmo lugar por caminhos diferentes, com velocidades diferentes, com corpos diferentes. Isso também é digno de atenção. O reconhecimento não produz um movimento uniforme. Cada um vai como pode.
+        Só depois de lançarem a rede para o lado direito, só depois da abundância repentina que entorpece os braços, é que João diz em voz baixa: <em>É o Senhor.</em> E Pedro, sem esperar, atira-se ao lago.
       </p>
 
-      <div class="passage">
-        <p>
-          Quando desembarcaram, viram uma brasa acesa com peixe em cima e pão.
-        </p>
-        <cite>Jo 21, 9</cite>
-      </div>
-
       <p>
-        O fogo já estava aceso. O peixe já estava assando. Jesus não esperou pela pesca milagrosa para preparar o almoço. Ele já tinha começado antes. A refeição não é uma recompensa pelo que foi pescado — é um gesto anterior a tudo isso, que os esperava desde que partiram.
+        O reconhecimento não veio da visão. Veio da graça derramada onde antes havia só esforço inútil. Foi a rede cheia que abriu os olhos — não um argumento, não uma aparição gloriosa. A presença de Cristo foi percebida pelo excesso onde havia falta.
       </p>
 
       <span class="break">✠</span>
 
       <p>
-        Há algo na brasa que o texto não explica, e que por isso diz mais. Pedro tinha negado Jesus à beira de outro fogo — também uma brasa, também de madrugada, também com pessoas em torno aquecendo as mãos. João lembra disso em outro lugar do Evangelho e não esquece aqui. A brasa é a mesma palavra nos dois episódios. O grego é preciso: <em>anthrakia</em>. Um braseiro. Só aparece duas vezes em todo o Novo Testamento — ali, na noite da negação, e aqui, na manhã da reaparição.
+        Quando chegam à margem, já há brasas acesas e peixe posto sobre elas, e pão. Jesus não esperou pela pesca milagrosa para preparar o alimento. Ele já tinha o fogo. Já tinha o pão. A refeição estava pronta antes da rede cheia — o cuidado precede o milagre.
       </p>
 
+      <div class="passage">
+        <p>Jesus disse-lhes: Vinde comer. Nenhum dos discípulos ousava perguntar-lhe: Quem és tu? Sabiam que era o Senhor.</p>
+        <cite>Jo 21, 12</cite>
+      </div>
+
       <p>
-        Jesus não escolheu o fogo por acidente. A memória de Pedro estava naquele cheiro. E Jesus foi até lá, até aquela memória, e transformou o mesmo elemento em hospitalidade. Não apagou o braseiro antigo — acendeu um novo com a mesma forma. Como se dissesse: eu sei onde você esteve. E vim te esperar aqui.
+        Nenhum perguntou. Havia algo naquele silêncio de manhã cedo — o cheiro do pão, o calor do fogo, o lago ainda cinzento — que tornava a pergunta impossível. Não por medo. Por evidência. Há presenças que não precisam ser nomeadas para serem reconhecidas. Há momentos em que a alma sabe antes que a boca pergunte.
       </p>
 
       <span class="break">✠ ✠ ✠</span>
 
       <p>
-        <em>Vinde comer</em>, Jesus diz. E ninguém ousou perguntar quem era. Sabiam que era o Senhor. Sabiam — e não sabiam como saber. O reconhecimento não passa pela certeza intelectual. Passa por outra coisa: pelo pão partido, pelo peixe nas mãos, pelo fogo que aquece antes de qualquer palavra.
+        A vigília termina assim: não com uma revelação relampejante, mas com uma refeição simples na beira de um lago. O Ressuscitado não convoca uma assembleia. Senta-se com os seus e parte o pão. A aurora pascal tem cheiro de brasa e peixe assado.
       </p>
 
       <p>
-        A cena mais silenciosa das aparições pascais é também a mais doméstica. Não há proclamação. Não há feridas mostradas. Não há missão anunciada ainda. Há brasa. Há pão. Há peixe. Há alguém que chegou antes e esperou.
-      </p>
-
-      <p>
-        A vigília termina assim: não com uma revelação que ilumina tudo, mas com uma refeição que sustenta o dia que começa. O ressuscitado não explica o que aconteceu. Ele serve o café da manhã.
+        Talvez seja isso o que se aprende nas noites longas e sem pesca: que Ele já estava na margem. Que o fogo já estava aceso. Que a espera dEle nunca foi ausência — foi presença que ainda não tínhamos olhos para ver.
       </p>
 
     </article>
@@ -320,7 +93,7 @@
     <footer>
       <a href="vigilia-i.html" class="footer-link">← Vig. I</a>
       <span class="footer-cross">✠</span>
-      <a href="index.html" class="footer-link">Todas as vigílias →</a>
+      <a href="vigilia-iii.html" class="footer-link">Vig. III →</a>
     </footer>
 
   </div>
