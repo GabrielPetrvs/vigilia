@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigília VI — Eva e Maria: do fruto proibido ao fruto da salvação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper:     #f8f6f1;
+      --ink:       #111010;
+      --ink-mid:   #3a3835;
+      --ink-light: #7a7570;
+      --red:       #8b1a1a;
+      --rule:      #d0ccc4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .masthead {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+      border-bottom: 2px solid var(--ink);
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.1s;
+    }
+
+    .masthead-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .masthead-back {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .masthead-back:hover { color: var(--red); }
+
+    .masthead-sep {
+      width: 1.5rem;
+      height: 1px;
+      background: var(--rule);
+      flex-shrink: 0;
+    }
+
+    .masthead-vignum {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .masthead h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    .masthead-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead-ref {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    .masthead-cross {
+      font-size: 0.78rem;
+      color: var(--rule);
+    }
+
+    .vigilia-body {
+      padding-top: 3.5rem;
+      padding-bottom: 5rem;
+      opacity: 0;
+      animation: appear 0.7s ease forwards 0.4s;
+    }
+
+    .vigilia-body p {
+      margin-bottom: 1.6rem;
+      color: var(--ink-mid);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .vigilia-body p:last-child { margin-bottom: 0; }
+
+    .vigilia-body p.opening::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 3.8rem;
+      line-height: 0.8;
+      float: left;
+      margin-right: 0.08em;
+      margin-top: 0.08em;
+      color: var(--ink);
+    }
+
+    .vigilia-body em { font-style: italic; }
+
+    /* ── Imagem ── */
+    .vigilia-img {
+      margin: 3rem 0;
+      opacity: 0;
+      animation: appear 0.7s ease forwards 0.35s;
+    }
+
+    .vigilia-img img {
+      width: 100%;
+      display: block;
+      filter: sepia(12%) contrast(1.02);
+    }
+
+    .vigilia-img figcaption {
+      margin-top: 0.6rem;
+      font-size: 0.72rem;
+      color: var(--ink-light);
+      font-style: italic;
+      letter-spacing: 0.03em;
+      text-align: right;
+    }
+
+    .break {
+      display: block;
+      text-align: center;
+      color: var(--red);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      margin: 2.6rem 0;
+      user-select: none;
+    }
+
+    footer {
+      padding: 2.5rem 0 4rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      animation: appear 0.6s ease forwards 0.7s;
+    }
+
+    .footer-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--red); }
+
+    .footer-cross { font-size: 0.85rem; color: var(--rule); }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 0 1.4rem; }
+      .masthead { padding-top: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="masthead">
+      <div class="masthead-eyebrow">
+        <a href="index.html" class="masthead-back">Vigília</a>
+        <span class="masthead-sep"></span>
+        <span class="masthead-vignum">Vig. VI</span>
+      </div>
+      <h1>Eva e Maria: do fruto proibido ao fruto da salvação</h1>
+      <div class="masthead-meta">
+        <span class="masthead-ref">Gn 3 · Jo 19, 25 · Santo Ireneu de Lyon</span>
+        <span class="masthead-cross">✠</span>
+      </div>
+    </header>
+
+    <figure class="vigilia-img">
+      <img src="imagens/vigilia-vi.png" alt="Detalhe de O Jardim do Éden — Jan Brueghel, o Velho" />
+      <figcaption>Jan Brueghel, o Velho — <em>O Jardim do Éden</em> (detalhe)</figcaption>
+    </figure>
+
+    <article class="vigilia-body">
+
+      <p class="opening">
+        No princípio, no jardim onde tudo era graça e comunhão com Deus, Eva levantou os olhos para a árvore. Viu o fruto e desejou-o — não como dom recebido, mas como conquista arrancada. Naquele olhar havia a sombra da soberba: o querer ser como Deus por conta própria, sem Deus. O fruto foi colhido, e com ele entrou no mundo a morte, a dor, o exílio do Paraíso. A árvore que deveria ser contemplada com reverência tornou-se instrumento da queda.
+      </p>
+
+      <p>
+        Séculos depois, no alto do Calvário, outra mulher levantou os olhos para outra árvore. Maria, de pé junto à cruz — <em>stabat Mater dolorosa</em> —, contemplou também um fruto pendurado no madeiro. Não o fruto da desobediência, mas o Fruto do seu ventre, Jesus. Não o fruto que promete divindade roubada, mas Aquele que é Deus e que, por amor, se fez servo e obedeceu até à morte. Eva buscou a vida afastando-se de Deus; Maria recebeu a vida entregando o próprio Filho a Deus. Eva disse: <em>tomarei.</em> Maria disse: <em>seja feito.</em>
+      </p>
+
+      <span class="break">✠ ✠ ✠</span>
+
+      <p>
+        A tradição patrística sempre contemplou esse paralelismo com profunda admiração. Santo Ireneu de Lyon via em Maria a nova Eva: onde a primeira desobedeceu e fechou o Paraíso, a segunda obedeceu e abriu o caminho da redenção. O nó atado pela incredulidade de Eva foi desatado pela fé de Maria. O mesmo gesto — olhar para uma árvore — carrega significados opostos conforme a disposição interior de quem olha: o coração que quer possuir, ou o coração que sabe oferecer.
+      </p>
+
+      <span class="break">✠</span>
+
+      <p>
+        E nós? A vida cotidiana é repleta dessas duas árvores. Há, a cada dia, os frutos que queremos arrancar: o reconhecimento que exigimos, a razão que reivindicamos, o prazer que não queremos adiar, o controle que não cedemos a Deus. São os pequenos paraísos particulares que construímos sem Ele. Mas há também, a cada dia, a cruz — aquela situação que não escolhemos, aquela renúncia que dói, aquele serviço que ninguém vê, aquela espera que humilha o nosso orgulho.
+      </p>
+
+      <p>
+        Diante de cada uma dessas cruzes, somos convidados a fazer o que Maria fez: ficar de pé, não fugir, e enxergar ali não a derrota, mas o Fruto da salvação. A santidade não está em grandes gestos heróicos, mas nesse olhar contemplativo que aprende, aos poucos, a ver a cruz como Maria viu — não com resignação amarga, mas com a fé de quem sabe que daquele madeiro nasce a vida.
+      </p>
+
+    </article>
+
+    <footer>
+      <a href="vigilia-v.html" class="footer-link">← Vig. V</a>
+      <span class="footer-cross">✠</span>
+      <a href="index.html" class="footer-link">Todas as vigílias →</a>
+    </footer>
+
+  </div>
+</body>
+</html>
