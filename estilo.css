@@ -107,6 +107,37 @@ body {
   color: var(--amber-dim);
 }
 
+/* ── Link de música ── */
+.music-link {
+  padding: 1.4rem 0 0;
+  opacity: 0;
+  animation: appear 0.6s ease forwards 0.25s;
+}
+
+.music-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.music-link a:hover {
+  color: var(--amber);
+  border-color: var(--amber-dim);
+}
+
+.music-icon {
+  font-size: 0.9rem;
+  color: var(--amber-dim);
+}
+
 /* ── Imagem ── */
 .vigilia-img {
   margin: 3rem 0;
