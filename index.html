@@ -32,7 +32,6 @@
       position: relative;
     }
 
-    /* ── Fundo fixo ── */
     .bg-image {
       position: fixed;
       inset: 0;
@@ -50,7 +49,6 @@
       padding: 0 2rem;
     }
 
-    /* ── Masthead ── */
     .masthead {
       padding-top: 6rem;
       padding-bottom: 3.5rem;
@@ -79,7 +77,6 @@
       text-transform: uppercase;
     }
 
-    /* ── About ── */
     .about {
       padding: 2.4rem 0 2.2rem;
       border-bottom: 1px solid var(--rule);
@@ -92,7 +89,6 @@
       animation: appear 0.8s ease forwards 0.3s;
     }
 
-    /* ── Vigílias list ── */
     .vigilias-header {
       padding-top: 2.4rem;
       display: flex;
@@ -122,9 +118,7 @@
       animation: appear 0.7s ease forwards 0.65s;
     }
 
-    .vigilia {
-      border-bottom: 1px solid var(--rule);
-    }
+    .vigilia { border-bottom: 1px solid var(--rule); }
 
     .vigilia a {
       display: grid;
@@ -151,7 +145,6 @@
     }
 
     .vigilia a:hover .vigilia-num { color: var(--amber); }
-
     .vigilia-body { min-width: 0; }
 
     .vigilia-title {
@@ -218,12 +211,23 @@
     <nav aria-label="Lista de vigílias">
       <div class="vigilias-header">
         <span class="vigilias-label">Vigílias</span>
-        <span class="vigilias-count">IX publicadas</span>
+        <span class="vigilias-count">X publicadas</span>
       </div>
 
       <ul class="vigilias-list">
 
         <!-- Adicione novas vigílias aqui, no topo da lista -->
+
+        <li class="vigilia">
+          <a href="vigilia-x.html">
+            <span class="vigilia-num">Vig. X</span>
+            <span class="vigilia-body">
+              <span class="vigilia-title">Recolhemo-nos diante do Sepulcro</span>
+              <span class="vigilia-ref">Jo 19, 38–42 · Sagrado Coração de Jesus</span>
+            </span>
+            <span class="vigilia-arrow">→</span>
+          </a>
+        </li>
 
         <li class="vigilia">
           <a href="vigilia-ix.html">
@@ -252,7 +256,7 @@
             <span class="vigilia-num">Vig. VII</span>
             <span class="vigilia-body">
               <span class="vigilia-title">O que o mar não devolve</span>
-              <span class="vigilia-ref">Jn 1–2</span>
+              <span class="vigilia-ref">Sl 55 · Mt 10, 16</span>
             </span>
             <span class="vigilia-arrow">→</span>
           </a>
