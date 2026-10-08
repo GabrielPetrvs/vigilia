@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <title>Vigília VI — Eva e Maria: do fruto proibido ao fruto da salvação</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,5 +67,27 @@
     </footer>
 
   </div>
+
+  <div class="share-wrap">
+    <button class="share-btn" id="share-btn" onclick="compartilhar()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Compartilhar
+    </button>
+  </div>
+  <script>
+    function compartilhar() {
+      var url = window.location.href;
+      navigator.clipboard.writeText(url).then(function() {
+        var btn = document.getElementById('share-btn');
+        btn.textContent = '✓ Copiado';
+        btn.classList.add('copied');
+        setTimeout(function() {
+          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/><\/svg> Compartilhar';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+
 </body>
 </html>

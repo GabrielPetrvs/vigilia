@@ -328,3 +328,37 @@ footer {
   .passage { padding-left: 1.2rem; }
   .epigraph { padding-left: 1.2rem; }
 }
+
+/* ── Botão compartilhar ── */
+.share-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0 0;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--amber-dim);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--amber);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.share-btn:hover {
+  border-color: var(--amber);
+  color: var(--ink);
+}
+
+.share-btn.copied {
+  border-color: var(--amber);
+  color: var(--amber);
+}
